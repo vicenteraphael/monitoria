@@ -1,4 +1,4 @@
-import Produto.Produto as Produto
+from Produto import Produto
 
 class ProdutoCompra:
     def __init__(self, produto: Produto, quantidade=1):
@@ -8,5 +8,5 @@ class ProdutoCompra:
     def subtotal(self):
         return self.produto.preco_unitario * self.quantidade
     
-    def __repr__(self):
-        return f"ProdutoCompra: {repr(self.produto)}, quantidade={self.quantidade}"
+    def mostrar(self):
+        return f"ProdutoCompra: {self.produto.mostrar()}, quantidade={self.quantidade}"

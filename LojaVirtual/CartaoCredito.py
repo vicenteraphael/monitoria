@@ -1,4 +1,4 @@
-import MetodoPagamento.MetodoPagamento as MetodoPagamento
+from MetodoPagamento import MetodoPagamento
 
 class CartaoCredito(MetodoPagamento):
     def pagar(self, valor):

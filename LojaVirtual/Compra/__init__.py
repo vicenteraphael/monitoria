@@ -1,1 +1,0 @@
-from Compra.Compra import Compra

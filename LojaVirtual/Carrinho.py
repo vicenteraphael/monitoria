@@ -1,4 +1,4 @@
-import Produto.ProdutoCompra as ProdutoCompra
+from ProdutoCompra import ProdutoCompra
 
 class Carrinho:
     def __init__(self):
@@ -15,7 +15,7 @@ class Carrinho:
                 return
         produto_compra = ProdutoCompra(produto, quantidade)
         self.itens.append(produto_compra)
-        print("Adicionando ao carrinho:", produto_compra.produto)
+        print("Adicionando ao carrinho:", produto_compra.produto.mostrar())
 
     def remover(self, produto, quantidade=None):
         for item in self.itens:
@@ -24,7 +24,7 @@ class Carrinho:
                     self.itens.remove(item)
                 else:
                     item.quantidade -= quantidade
-                print(f"Removendo {produto}, quantidade = {quantidade}")
+                print(f"Removendo do carrinho: {produto.mostrar()}, quantidade = {quantidade}")
                 return
 
         print(f"({produto}) não está no carrinho")
@@ -36,11 +36,11 @@ class Carrinho:
     def total(self):
         return sum(item.subtotal() for item in self.itens)
     
-    def __repr__(self):
+    def mostrar(self):
         if (len(self.itens) == 0): return "Carrinho vazio"
 
         desc = ""
         for item in self.itens:
-            desc += repr(item) + "\n"
+            desc += item.mostrar() + "\n"
 
         return "Produtos do Carrinho:\n" + desc

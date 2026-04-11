@@ -1,1 +1,0 @@
-from Carrinho.Carrinho import Carrinho

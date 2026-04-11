@@ -4,5 +4,5 @@ class Produto:
         self.descricao = descricao
         self.preco_unitario = preco_unitario
 
-    def __repr__(self):
+    def mostrar(self):
         return f"Produto: {self.nome}, R${self.preco_unitario}"

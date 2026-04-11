@@ -1,29 +1,35 @@
-from Pessoa import *
-from Produto import *
-from MetodoPagamento import *
-from Entrega import *
-from Compra import *
+from Cliente import Cliente
+from Funcionario import Funcionario
+from Produto import Produto
+from Estoque import Estoque
+from Pix import Pix
+from EntregaNormal import EntregaNormal
+from Compra import Compra
 
 cliente = Cliente("Raphael", 17, 12345678891, "raphael@gmail.com", "1234")
+funcionario = Funcionario("Igor", 26, 1234567890, "igor@gmail.com", "5678", 10000)
+
+estoque = Estoque()
 
 notebook = Produto("Notebook", "Um notebook incrível", 2534)
 mouse = Produto("Mouse", "Um mouse incrível", 30)
-fone = Produto("Fone", "Um fone de ouvido incrível", 18)
+
+estoque.adicionar(funcionario, notebook)
+estoque.adicionar(funcionario, mouse)
+
+print(estoque.mostrar())
 
 cliente.carrinho.adicionar(notebook, 4)
 cliente.carrinho.adicionar(mouse, 8)
-cliente.carrinho.adicionar(fone, 9)
 
-print(cliente.carrinho)
+print(cliente.carrinho.mostrar())
 
-cliente.carrinho.remover(notebook, 2)
 cliente.carrinho.remover(mouse, 8)
-cliente.carrinho.remover(fone)
 
-print(cliente.carrinho)
+print(cliente.carrinho.mostrar())
 
 pagamento = Pix()
 entrega = EntregaNormal()
-compra = Compra(cliente, pagamento, entrega)
+compra = Compra(cliente, pagamento, entrega, estoque)
 
 compra.finalizar()
