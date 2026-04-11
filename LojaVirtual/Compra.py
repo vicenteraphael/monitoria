@@ -10,7 +10,6 @@ class Compra:
         self.pagamento = pagamento
         self.entrega = entrega
         self.estoque = estoque
-        self.status = "Em aberto"
 
     def validar(self):
         for item in self.carrinho.itens:
@@ -18,7 +17,7 @@ class Compra:
                 raise ValueError("Estoque insuficiente")
         
     def total(self):
-        total_produtos = self.carrinho.total() + self.entrega.calcular_frete()
+        total_produtos = self.carrinho.total()
         frete = self.entrega.calcular_frete()
         return total_produtos + frete
 
